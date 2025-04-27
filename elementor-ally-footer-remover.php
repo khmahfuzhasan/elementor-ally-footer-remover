@@ -29,6 +29,15 @@ add_action('admin_init', function() {
     register_setting('eafr_settings_group', 'eafr_footer_text_align'); // Register new setting for text alignment
 });
 
+// Add "Settings" link on the Plugins page
+add_filter('plugin_action_links_' . plugin_basename(__FILE__), function($links) {
+    $settings_link = '<a href="options-general.php?page=elementor-ally-footer-remover">Settings</a>';
+    array_unshift($links, $settings_link); // Add the link at the beginning
+    return $links;
+});
+
+
+
 // Settings page content
 function eafr_settings_page() {
     ?>
